@@ -35,7 +35,7 @@ class AuthController extends Controller
                     'auth_token' => $token,
                     'type' => 'Bearer'
                 ],
-                200
+                201
             );
         }
         return $this->sendErrorResponse('Registration failed', ['Please try again'], 403);
