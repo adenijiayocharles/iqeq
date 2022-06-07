@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Manufacturer;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,7 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
-        Manufacturer::factory(10)->create();
+        $this->call([
+            ManufacturerSeeder::class,
+            UserSeeder::class,
+            VehicleTypeSeeder::class,
+            VehicleDataSeeder::class
+        ]);
     }
 }
