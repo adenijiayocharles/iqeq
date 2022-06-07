@@ -10,7 +10,7 @@ class Vehicle extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'manufacturer_id', 'vehicle_type_id', 'base_price', 'top_speed', 'fuel_type', 'maximum_seating', 'transmission_type', 'number_of_doors', 'length', 'width', 'weight'
+        'name', 'manufacturer_id', 'vehicle_type_id', 'base_price', 'top_speed', 'fuel_type', 'maximum_seating', 'transmission_type', 'number_of_doors', 'length', 'width', 'weight', 'height'
     ];
 
     public function manufacturer()
