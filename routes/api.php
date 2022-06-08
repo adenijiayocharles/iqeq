@@ -21,3 +21,4 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/vehicles', [VehicleController::class, 'all']);
+Route::get('/vehicles/{vehicle_id}', [VehicleController::class, 'fetchOne']);
