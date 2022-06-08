@@ -12,7 +12,7 @@ trait HttpResponse
      * @param  int $code http status code
      * @return json_object
      */
-    public function sendSuccessResponse(string $message, array $data = [], int $code = 200)
+    public function sendSuccessResponse(string $message, $data, int $code = 200)
     {
         $response = [
             'status' => 'success',
@@ -30,7 +30,7 @@ trait HttpResponse
      * @param  int $code http status code
      * @return json_object
      */
-    public function sendErrorResponse(string $message, array $errors = [], int $code = 400)
+    public function sendErrorResponse(string $message, $errors, int $code = 400)
     {
         $response = [
             'status' => 'error',
