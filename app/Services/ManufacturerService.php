@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Manufacturer;
-use PhpParser\Node\Expr\FuncCall;
 
 class ManufacturerService
 {
@@ -15,7 +14,7 @@ class ManufacturerService
                 $q->where('vehicle_type_id', $vehicle_type);
             });
         }
-        return $manufacturers->simplePaginate(20);
+        return $manufacturers->get();
     }
 
     public function one($manufacturer_id)

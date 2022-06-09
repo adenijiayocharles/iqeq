@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ManufacturerCollection;
 use App\Traits\HttpResponse;
-use Illuminate\Http\Request;
 use App\Services\ManufacturerService;
 
 class ManufacturerController extends Controller
@@ -15,7 +15,7 @@ class ManufacturerController extends Controller
             $manufacturers = $manufacturerService->all($vehicle_type_id);
 
             if ($manufacturers->count()) {
-                return $this->sendSuccessResponse("Manufacturers found", $manufacturers, 200);
+                return $this->sendSuccessResponse("Manufacturers found", new ManufacturerCollection($manufacturers), 200);
             } else {
                 return $this->sendSuccessResponse("Manufacturers not found", $manufacturers, 404);
             }
