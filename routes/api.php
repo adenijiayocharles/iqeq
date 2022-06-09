@@ -21,7 +21,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/vehicles', [VehicleController::class, 'all']);
-
 Route::get('/vehicles/{vehicle_id}', [VehicleController::class, 'fetchOne']);
 Route::put('/vehicles/{vehicle_id}', [VehicleController::class, 'update']);
 Route::put('/vehicles/engine-data/{vehicle_id}', [VehicleController::class, 'updateEngineData']);
+
+Route::get('/manufacturers/{vehicle_type_id?}', [ManufacturerController::class, 'all']);
