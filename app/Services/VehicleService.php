@@ -11,7 +11,8 @@ class VehicleService
         return Vehicle::with('engineData')->simplePaginate(20);
     }
 
-    public function getOne($vehicle_id) {
-        return Vehicle::with('engineData')->where('id', $vehicle_id)->get();
+    public function getOne($vehicle_id)
+    {
+        return Vehicle::with('engineData')->findOrFail($vehicle_id);
     }
 }
