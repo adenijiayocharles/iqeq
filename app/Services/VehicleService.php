@@ -8,7 +8,7 @@ class VehicleService
 {
     public function all()
     {
-        return Vehicle::with('engineData')->simplePaginate(20);
+        return Vehicle::with('engineData')->get();
     }
 
     public function getOne($vehicle_id)

@@ -20,6 +20,11 @@ class Vehicle extends Model
 
     public function engineData()
     {
-        return $this->hasOne(EngineData::class);
+        return $this->hasOne(EngineData::class, 'vehicle_id');
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(VehicleType::class, 'vehicle_type_id');
     }
 }

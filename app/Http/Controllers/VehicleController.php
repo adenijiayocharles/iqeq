@@ -6,6 +6,8 @@ use Exception;
 use App\Traits\HttpResponse;
 use Illuminate\Http\Request;
 use App\Services\VehicleService;
+use App\Http\Resources\VehicleResource;
+use App\Http\Resources\VehicleCollection;
 
 class VehicleController extends Controller
 {
@@ -14,7 +16,7 @@ class VehicleController extends Controller
     {
         try {
             $vehicles = $vehicleService->all();
-            return $this->sendSuccessResponse('Vehicles Fetched', $vehicles, 200);
+            return $this->sendSuccessResponse('Vehicles Fetched', new VehicleCollection($vehicles), 200);
         } catch (Exception $e) {
             return $this->sendErrorResponse($e->getMessage(), '', 404);
         }
@@ -24,7 +26,7 @@ class VehicleController extends Controller
     {
         try {
             $vehicle_data = $vehicleService->getOne($vehicle_id);
-            return $this->sendSuccessResponse('Vehicle Data Fetched', $vehicle_data, 200);
+            return $this->sendSuccessResponse('Vehicle Data Fetched', new VehicleResource($vehicle_data), 200);
         } catch (Exception $e) {
             return $this->sendErrorResponse($e->getMessage(), '', 404);
         }
