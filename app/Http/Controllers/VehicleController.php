@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Traits\HttpResponse;
+use Illuminate\Http\Request;
 use App\Services\VehicleService;
 
 class VehicleController extends Controller
@@ -24,6 +25,26 @@ class VehicleController extends Controller
         try {
             $vehicle_data = $vehicleService->getOne($vehicle_id);
             return $this->sendSuccessResponse('Vehicle Data Fetched', $vehicle_data, 200);
+        } catch (Exception $e) {
+            return $this->sendErrorResponse($e->getMessage(), '', 404);
+        }
+    }
+
+    public function update(VehicleService $vehicleService, Request $request, $vehicle_id)
+    {
+        try {
+            $update = $vehicleService->update($request->all(), $vehicle_id);
+            return $this->sendSuccessResponse('Vehicle Data Updated', $update, 201);
+        } catch (Exception $e) {
+            return $this->sendErrorResponse($e->getMessage(), '', 404);
+        }
+    }
+
+    public function updateEngineData(VehicleService $vehicleService, Request $request, $vehicle_id)
+    {
+        try {
+            $update = $vehicleService->updateEngineData($request->all(), $vehicle_id);
+            return $this->sendSuccessResponse('Vehicle Engine Data Updated', $update, 201);
         } catch (Exception $e) {
             return $this->sendErrorResponse($e->getMessage(), '', 404);
         }
