@@ -9,6 +9,7 @@ use App\Services\ManufacturerService;
 class ManufacturerController extends Controller
 {
     use HttpResponse;
+
     public function all(ManufacturerService $manufacturerService, $vehicle_type_id = null)
     {
         try {

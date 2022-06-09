@@ -3,7 +3,6 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ManufacturerController;
 use App\Http\Controllers\VehicleController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/vehicles', [VehicleController::class, 'all']);
-Route::get('/vehicles/{vehicle_id}', [VehicleController::class, 'fetchOne']);
-Route::put('/vehicles/{vehicle_id}', [VehicleController::class, 'update']);
-Route::put('/vehicles/engine-data/{vehicle_id}', [VehicleController::class, 'updateEngineData']);
-
-Route::get('/manufacturers/{vehicle_type_id?}', [ManufacturerController::class, 'all']);
+Route::group(['middleware' => 'jwt.verify'], function ($router) {
+    Route::get('/vehicles', [VehicleController::class, 'all']);
+    Route::get('/vehicles/{vehicle_id}', [VehicleController::class, 'fetchOne']);
+    Route::put('/vehicles/{vehicle_id}', [VehicleController::class, 'update']);
+    Route::put('/vehicles/engine-data/{vehicle_id}', [VehicleController::class, 'updateEngineData']);
+    Route::get('/manufacturers/{vehicle_type_id?}', [ManufacturerController::class, 'all']);
+});

@@ -12,6 +12,7 @@ use App\Http\Resources\VehicleCollection;
 class VehicleController extends Controller
 {
     use HttpResponse;
+
     public function all(VehicleService $vehicleService)
     {
         try {
