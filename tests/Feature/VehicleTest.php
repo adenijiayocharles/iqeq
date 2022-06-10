@@ -54,7 +54,7 @@ class VehicleTest extends TestCase
             "base_price" => 456343,
             "fuel_type" => "diesel"
         ];
-        $this->putJson('api/vehicles/' . rand(1, 5), $updateData, ['Authorization' => 'Bearer ' . $token, 'Accept' => 'application/json', 'Content-Type' => 'application/json'])
+        $this->putJson('api/vehicles/' . rand(1, 3), $updateData, ['Authorization' => 'Bearer ' . $token, 'Accept' => 'application/json', 'Content-Type' => 'application/json'])
             ->assertStatus(201);
     }
 
@@ -75,7 +75,7 @@ class VehicleTest extends TestCase
             "power" => 34.4,
             "number_of_valves" => 10
         ];
-        $this->putJson('api/vehicles/engine-data/' . rand(1, 5), $updateData, ['Authorization' => 'Bearer ' . $token, 'Accept' => 'application/json', 'Content-Type' => 'application/json'])
+        $this->putJson('api/vehicles/engine-data/' . rand(1, 3), $updateData, ['Authorization' => 'Bearer ' . $token, 'Accept' => 'application/json', 'Content-Type' => 'application/json'])
             ->assertStatus(201);
     }
 }
