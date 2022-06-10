@@ -10,6 +10,14 @@ class ManufacturerController extends Controller
 {
     use HttpResponse;
 
+    /**
+     * returns all manufacturers of vehicles or the manufacturers of a specified vehicle type
+     *
+     * @param   ManufacturerService  $manufacturerService  [$manufacturerService description]
+     * @param   [integer]               $vehicle_type_id      [optional vehicle type id]
+     *
+     * @return  [json]
+     */
     public function all(ManufacturerService $manufacturerService, $vehicle_type_id = null)
     {
         try {

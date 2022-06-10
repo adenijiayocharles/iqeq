@@ -11,6 +11,14 @@ class AuthController extends Controller
 {
     use HttpResponse;
 
+    /**
+     * user login method
+     *
+     * @param   UserLoginRequest  $request      [validated request body]
+     * @param   AuthService       $authService  [authentication service class file]
+     *
+     * @return  json
+     */
     public function login(UserLoginRequest $request, AuthService $authService)
     {
         if ($token = $authService->login($request)) {
@@ -26,6 +34,14 @@ class AuthController extends Controller
         return $this->sendErrorResponse('Login failed', ['Invalid email or password'], 403);
     }
 
+    /**
+     * user registration method
+     *
+     * @param   UserRegisterRequest  $request      [validated request body]
+     * @param   AuthService       $authService  [authentication service class file]
+     *
+     * @return  json
+     */
     public function register(UserRegisterRequest $request, AuthService $authService)
     {
         if ($token = $authService->register($request)) {
