@@ -8,12 +8,12 @@ class VehicleService
 {
     public function all()
     {
-        return Vehicle::with('engineData')->get();
+        return Vehicle::get();
     }
 
     public function getOne($vehicle_id)
     {
-        return Vehicle::with('engineData')->findOrFail($vehicle_id);
+        return Vehicle::findOrFail($vehicle_id);
     }
 
     /**
@@ -26,21 +26,7 @@ class VehicleService
      */
     public function update($request, $vehicle_id)
     {
-        $vehicle = Vehicle::with('engineData')->findOrFail($vehicle_id);
-        return $vehicle->update($request);
-    }
-
-    /**
-     * update vehicle's engine data
-     *
-     * @param   [array]  $request     [body of request]
-     * @param   [integer]  $vehicle_id  [id of the vehicle to be updated]
-     *
-     * @return  [boolean]
-     */
-    public function updateEngineData($request, $vehicle_id)
-    {
         $vehicle = Vehicle::findOrFail($vehicle_id);
-        return $vehicle->engineData->update($request);
+        return $vehicle->update($request);
     }
 }

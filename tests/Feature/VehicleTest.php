@@ -30,9 +30,7 @@ class VehicleTest extends TestCase
                 'status',
                 'message',
                 'data' => [
-                    'id',
-                    'name',
-                    'engine_data'
+                    'id', 'name', 'base_price', 'top_speed', 'fuel_type', 'maximum_seating', 'transmission_type', 'number_of_doors', 'length', 'width', 'weight', 'height'
                 ]
             ]);
     }
@@ -55,27 +53,6 @@ class VehicleTest extends TestCase
             "fuel_type" => "diesel"
         ];
         $this->putJson('api/vehicles/' . rand(1, 3), $updateData, ['Authorization' => 'Bearer ' . $token, 'Accept' => 'application/json', 'Content-Type' => 'application/json'])
-            ->assertStatus(201);
-    }
-
-    /**
-     * test for updating vehicle engine data details
-     *
-     * @return  void    [return description]
-     */
-    public function test_update_vehicle_engine_data_details(): void
-    {
-        $user = User::factory()->create([
-            'name' => $this->faker->firstName() . ' ' . $this->faker->lastName(),
-            'email' => $this->faker->email(),
-            'password' => $this->faker->password()
-        ]);
-        $token = JWTAuth::fromUser($user);
-        $updateData = [
-            "power" => 34.4,
-            "number_of_valves" => 10
-        ];
-        $this->putJson('api/vehicles/engine-data/' . rand(1, 3), $updateData, ['Authorization' => 'Bearer ' . $token, 'Accept' => 'application/json', 'Content-Type' => 'application/json'])
             ->assertStatus(201);
     }
 }

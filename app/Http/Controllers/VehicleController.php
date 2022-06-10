@@ -42,14 +42,4 @@ class VehicleController extends Controller
             return $this->sendErrorResponse($e->getMessage(), '', 404);
         }
     }
-
-    public function updateEngineData(VehicleService $vehicleService, Request $request, $vehicle_id)
-    {
-        try {
-            $update = $vehicleService->updateEngineData($request->all(), $vehicle_id);
-            return $this->sendSuccessResponse('Vehicle Engine Data Updated', $update, 201);
-        } catch (Exception $e) {
-            return $this->sendErrorResponse($e->getMessage(), '', 404);
-        }
-    }
 }

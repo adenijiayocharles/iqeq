@@ -29,7 +29,6 @@ class VehicleResource extends JsonResource
             'width' => $this->width,
             'height' => $this->height,
             'weight' => $this->weight,
-            'engine_data' => new EngineDataResource($this->engineData)
         ];
     }
 }
