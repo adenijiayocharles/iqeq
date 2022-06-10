@@ -18,7 +18,7 @@ class AuthTest extends TestCase
      */
     public function test_registration(): void
     {
-        $password = $this->faker->password();
+        $password = $this->faker->password() . rand(234, 4443424);
         $response = $this->postJson(
             'api/register',
             [
@@ -49,7 +49,7 @@ class AuthTest extends TestCase
      */
     public function test_login(): void
     {
-        $password = $this->faker->password();
+        $password = $this->faker->password() . rand(234, 4443424);
         $email = $this->faker->email();
 
         User::factory()->create([
